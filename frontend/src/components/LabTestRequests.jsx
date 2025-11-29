@@ -19,7 +19,7 @@ const LabTestRequests = () => {
       console.log("Current user from localStorage:", user);
 
       console.log("Fetching lab tests...");
-      const res = await fetch("http://localhost:5000/api/lab-tests/tests", {
+      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/lab-tests/tests`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
