@@ -72,9 +72,7 @@ function App() {
         {/* Public Routes */}
         <Route path="/" element={<HomePage />} />
         <Route path="/register" element={<RegisterForm />} />
-        {/* <Route path="/login" element={<LoginForm onLogin={setUser} />} /> */}
-        <Route path="*" element={<div>404 Page Not Found</div>} />
-
+        <Route path="/login" element={<LoginForm onLogin={setUser} />} />
         <Route path="/doctors" element={<div className="min-h-screen bg-gray-50"><DoctorsPage /></div>} />
         <Route path="/appointment/:id" element={<BookAppointmentPage />} />
         <Route path="/doctors/approved" element={<PatientDoctors user={user} />} />
@@ -88,7 +86,7 @@ function App() {
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
 
         {/* Patient Routes */}
-        <Route path="/patient-dashboard" element={<PatientDashboard user={user} />} />
+       
         
         <Route path="/patient-profile" element={<PatientProfile user={user} />} />
 
@@ -111,12 +109,12 @@ function App() {
  <Route path="doctor-feedback" element={<DoctorFeedbackSummary/>}/>
   <Route path="approval-status" element={<ApprovalStatus user={user} />} />
   <Route path="appointments/status/patient" element={<PatientAppointments user={user} />} />
-     <Route path="/doctor-dashboard/analytics" element={<DoctorAnalytics />} />
+     <Route path="analytics" element={<DoctorAnalytics />} />
 </Route>
 
 
         {/* Fallback Route */}
-        <Route path="*" element={<LoginForm onLogin={setUser} />} />
+        {/* <Route path="*" element={<LoginForm onLogin={setUser} />} /> */}
 
 
 
