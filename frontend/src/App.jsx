@@ -86,7 +86,7 @@ function App() {
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
 
         {/* Patient Routes */}
-       
+        <Route path="/patient-dashboard" element={<PatientDashboard user={user} />} />
         
         <Route path="/patient-profile" element={<PatientProfile user={user} />} />
 
@@ -109,12 +109,12 @@ function App() {
  <Route path="doctor-feedback" element={<DoctorFeedbackSummary/>}/>
   <Route path="approval-status" element={<ApprovalStatus user={user} />} />
   <Route path="appointments/status/patient" element={<PatientAppointments user={user} />} />
-     <Route path="analytics" element={<DoctorAnalytics />} />
+     <Route path="/doctor-dashboard/analytics" element={<DoctorAnalytics />} />
 </Route>
 
 
         {/* Fallback Route */}
-        {/* <Route path="*" element={<LoginForm onLogin={setUser} />} /> */}
+        <Route path="*" element={<LoginForm onLogin={setUser} />} />
 
 
 
