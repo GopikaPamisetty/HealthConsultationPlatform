@@ -54,7 +54,7 @@ const LabTestRequests = () => {
   // Update status
   const handleUpdate = async (id, status) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/lab-tests/${id}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/lab-tests/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         body: JSON.stringify({ status }),
@@ -84,7 +84,7 @@ const LabTestRequests = () => {
 
     try {
       const res = await axios.post(
-        `http://localhost:5000/api/lab/upload-result/${selectedTest._id}`,
+        `${import.meta.env.VITE_API_BASE_URL}/api/lab/upload-result/${selectedTest._id}`,
         formData,
         {
           headers: {
@@ -110,7 +110,7 @@ const LabTestRequests = () => {
 
   // Download file
   const handleDownload = (testId, fileName = "result.pdf") => {
-    const url = `http://localhost:5000/api/lab/download-result/${testId}`;
+    const url = `${import.meta.env.VITE_API_BASE_URL}/api/lab/download-result/${testId}`;
     const link = document.createElement("a");
     link.href = url;
     link.setAttribute("download", fileName);
@@ -119,7 +119,7 @@ const LabTestRequests = () => {
 
   // View PDF in modal
   const handleView = async (testId) => {
-    const url = `http://localhost:5000/api/lab/download-result/${testId}`;
+    const url = `${import.meta.env.VITE_API_BASE_URL}/api/lab/download-result/${testId}`;
     console.log("Opening PDF for testId:", testId, "URL:", url);
 
     try {
