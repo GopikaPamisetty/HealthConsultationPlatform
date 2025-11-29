@@ -12,7 +12,7 @@ const PatientDoctors = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("http://localhost:5000/api/doctors")
+      .get(`${import.meta.env.VITE_API_BASE_URL}/api/doctors`)
       .then((res) => {
         const data = Array.isArray(res.data)
           ? res.data

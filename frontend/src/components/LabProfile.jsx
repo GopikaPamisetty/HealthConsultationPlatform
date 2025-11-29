@@ -14,7 +14,7 @@ const LabProfile = () => {
     const fetchLabProfile = async () => {
       if (!token) return navigate("/login");
       try {
-        const res = await fetch("http://localhost:5000/api/lab/profile", {
+        const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/lab/profile`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();
@@ -59,7 +59,7 @@ const LabProfile = () => {
 
   const handleSave = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/lab/profile", {
+      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/lab/profile`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

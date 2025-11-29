@@ -16,7 +16,7 @@ const PatientLabTests = () => {
     try {
       console.log("Fetching tests for patientId:", patientId);
       const res = await fetch(
-        `http://localhost:5000/api/lab-tests/patient/${patientId}`,
+       `${import.meta.env.VITE_API_BASE_URL}/api/lab-tests/patient/${patientId}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
@@ -48,7 +48,7 @@ const PatientLabTests = () => {
 
   // Download PDF
   const handleDownload = async (testId, fileName = "result.pdf") => {
-    const url = `http://localhost:5000/api/lab/download-result/${testId}`;
+    const url = `${import.meta.env.VITE_API_BASE_URL}/api/lab/download-result/${testId}`;
   
     try {
       const res = await fetch(url, {
@@ -76,7 +76,7 @@ const PatientLabTests = () => {
 
   // View PDF in modal
   const handleView = async (testId) => {
-    const url = `http://localhost:5000/api/lab/download-result/${testId}`;
+    const url = `${import.meta.env.VITE_API_BASE_URL}/api/lab/download-result/${testId}`;
     console.log("Opening PDF for testId:", testId, "URL:", url);
 
     try {

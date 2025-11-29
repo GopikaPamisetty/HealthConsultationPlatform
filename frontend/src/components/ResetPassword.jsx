@@ -11,7 +11,7 @@ const PendingAppointments = () => {
         const token = localStorage.getItem("token");
         // must have been set after login
 
-await axios.get("http://localhost:5000/api/appointments/appointments", {
+await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/appointments/appointments`, {
   headers: {
     Authorization: `Bearer ${token}`,
   },
@@ -30,7 +30,7 @@ await axios.get("http://localhost:5000/api/appointments/appointments", {
     try {
       const token = localStorage.getItem("token");
       await axios.patch(
-        `http://localhost:5000/api/appointments/update-status/${id}`,
+        `${import.meta.env.VITE_API_BASE_URL}/api/appointments/update-status/${id}`,
         { status },
         { headers: { Authorization: `Bearer ${token}` } }
       );

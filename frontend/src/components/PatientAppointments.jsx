@@ -1,9 +1,4 @@
-
-
 // src/components/PatientAppointments.jsx
-
-
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import FeedbackModal from './FeedbackModal'; // keep path as-is
@@ -36,7 +31,7 @@ const PatientAppointments = () => {
         const userId = user._id;
 
         const res = await axios.get(
-          `http://localhost:5000/api/appointments/status/patient/${userId}`,
+          `${import.meta.env.VITE_API_BASE_URL}/api/appointments/status/patient/${userId}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -61,7 +56,7 @@ console.log(`🔗 [DEBUG] Appointments with reportUrl: ${withReportUrls.length}`
           completed.map(async (appt) => {
             try {
               const fbRes = await axios.get(
-                `http://localhost:5000/api/feedback/appointment/${appt._id}`,
+                `${import.meta.env.VITE_API_BASE_URL}/api/feedback/appointment/${appt._id}`,
                 {
                   headers: { Authorization: `Bearer ${token}` },
                 }
@@ -145,7 +140,7 @@ const handleUploadReport = async (appointmentId, file) => {
 
   try {
     const res = await axios.post(
-      `http://localhost:5000/api/appointments/upload-report/${appointmentId}`,
+     `${import.meta.env.VITE_API_BASE_URL}/api/appointments/upload-report/${appointmentId}`,
       formData,
       {
         headers: {

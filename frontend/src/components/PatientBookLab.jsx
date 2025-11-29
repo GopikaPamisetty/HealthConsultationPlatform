@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const API_BASE = "http://localhost:5000/api/lab"; // Update your endpoint
+const API_BASE = `${import.meta.env.VITE_API_BASE_URL}/api/lab`; // Update your endpoint
 
 const PatientBookLab = () => {
   const [labs, setLabs] = useState([]);

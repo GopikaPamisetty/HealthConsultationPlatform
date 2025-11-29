@@ -37,7 +37,7 @@ const LabDashboard = () => {
 
     try {
       const res = await axios.post(
-        `http://localhost:5000/api/lab/upload-result/${testId}`,
+        `${import.meta.env.VITE_API_BASE_URL}/api/lab/upload-result/${testId}`,
         formData,
         {
           headers: { Authorization: `Bearer ${token}`, "Content-Type": "multipart/form-data" },

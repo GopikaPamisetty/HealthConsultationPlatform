@@ -1,53 +1,3 @@
-// import React from "react";
-
-// const PatientProfile = ({ user }) => {
-//   if (!user) {
-//     return <p className="text-center text-gray-600 mt-8">Loading profile...</p>;
-//   }
-
-//   return (
-//     <div className="flex justify-center items-center min-h-screen bg-gray-100">
-//       <div className="w-full max-w-md bg-white rounded-xl shadow-lg p-8 text-center">
-//         {/* Profile Image */}
-//         <div className="flex justify-center mb-6">
-//           <img
-//             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLIbLTGKz4waJGU2vkbhQkRavjf2OdeY7Eo4l8yFnggdF3fX1bUF4FEUP13o34ioSCm-M&usqp=CAU"
-//             alt="profile"
-            
-//           />
-//         </div>
-
-//         {/* Profile Title */}
-//         <h2 className="text-2xl font-semibold text-gray-800 mb-6">
-//           Patient Profile
-//         </h2>
-
-//         {/* Profile Info */}
-//         <div className="space-y-3 text-left text-gray-700">
-//           <p>
-//             <span className="font-semibold text-gray-900">Name:</span>{" "}
-//             {user.name || "N/A"}
-//           </p>
-//           <p>
-//             <span className="font-semibold text-gray-900">Email:</span>{" "}
-//             {user.email || "N/A"}
-//           </p>
-//           <p>
-//             <span className="font-semibold text-gray-900">Role:</span> Patient
-//           </p>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default PatientProfile;
-
-
-
-
-
-
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { FaUser, FaEdit, FaPhoneAlt, FaSignOutAlt } from "react-icons/fa";
@@ -73,7 +23,7 @@ const PatientProfile = ({ user }) => {
     const fetchProfile = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await fetch("http://localhost:5000/api/auth/profile/me", {
+        const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/auth/profile/me`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -127,7 +77,7 @@ const PatientProfile = ({ user }) => {
         imageUrl: form.image || profile.imageUrl,
       };
   
-      const res = await fetch("http://localhost:5000/api/auth/profile/me", {
+      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/auth/profile/me`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

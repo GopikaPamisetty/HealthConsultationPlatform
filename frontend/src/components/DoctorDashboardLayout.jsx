@@ -16,20 +16,6 @@ const DoctorDashboardLayout = () => {
   const isDashboardRoot = location.pathname === "/doctor-dashboard";
   const [doctorName, setDoctorName] = useState("");
 
-  // 🩺 Fetch doctor's name from localStorage
-  // useEffect(() => {
-  //   try {
-  //     const userData = JSON.parse(localStorage.getItem("user"));
-  //     if (userData?.name) {
-  //       setDoctorName(userData.name);
-  //     } else {
-  //       setDoctorName("Doctor");
-  //     }
-  //   } catch (err) {
-  //     console.error("Error fetching doctor name:", err);
-  //     setDoctorName("Doctor");
-  //   }
-  // }, []);
 
 
   useEffect(() => {

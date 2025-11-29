@@ -15,11 +15,6 @@ import "./cron/reminderJob.js";
 import path from "path"
 import labRoutes from "./routes/labRoutes.js";
 import labTestRoutes from "./routes/labTestRoutes.js";
-// ... existing code
-
-
-
-// ... existing code
 
 
 dotenv.config();
@@ -35,9 +30,16 @@ app.use(express.urlencoded({ limit: '10mb', extended: true }));
 
 // Middleware
 
+// app.use(cors({
+//   credentials: true
+// }));
+
 app.use(cors({
+  origin: "https://healthconsultationplatformfrontend.onrender.com",
   credentials: true
 }));
+
+
 // app.use(express.json());
 app.use('/api/auth', authRoutes);
 

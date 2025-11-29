@@ -21,7 +21,7 @@ const LabTestRequests = () => {
       console.log("Current user from localStorage:", user);
   
       console.log("Fetching lab tests...");
-      const res = await fetch("http://localhost:5000/api/lab-tests/tests", {
+      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/lab-tests/tests`, {
         headers: { Authorization: `Bearer ${token}` },
       });
   
@@ -54,7 +54,7 @@ const LabTestRequests = () => {
   // Update status
   const handleUpdate = async (id, status) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/lab-tests/${id}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/lab-tests/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         body: JSON.stringify({ status }),
@@ -80,7 +80,7 @@ const handleUpload = async () => {
 
   try {
     const res = await axios.post(
-      `http://localhost:5000/api/lab/upload-result/${selectedTest._id}`,
+      `${import.meta.env.VITE_API_BASE_URL}/api/lab/upload-result/${selectedTest._id}`,
       formData,
       {
         headers: {
@@ -110,39 +110,17 @@ const handleUpload = async () => {
   
   // Download file
   const handleDownload = (testId, fileName = "result.pdf") => {
-    const url = `http://localhost:5000/api/lab/download-result/${testId}`;
+    const url = `${import.meta.env.VITE_API_BASE_URL}/api/lab/download-result/${testId}`;
     const link = document.createElement("a");
     link.href = url;
     link.setAttribute("download", fileName);
     link.click();
   };
   
-  // View file in browser
-// Open PDF in a new browser tab
+ 
 
-  // View PDF in browser
-  // const handleView = async (testId, testName) => {
-  //   const url = `http://localhost:5000/api/lab/download-result/${testId}`;
-  //   console.log("Opening PDF for testId:", testId, "URL:", url);
-  
-  //   try {
-  //     const res = await fetch(url, {
-  //       headers: { Authorization: `Bearer ${token}` },
-  //     });
-  
-  //     if (!res.ok) throw new Error("Failed to fetch PDF");
-  
-  //     const blob = await res.blob();
-  //     const blobUrl = window.URL.createObjectURL(blob);
-  //     window.open(blobUrl, "_blank");
-  //     console.log("PDF opened in new tab:", blobUrl);
-  //   } catch (err) {
-  //     console.error("Error opening PDF:", err);
-  //     toast.error("Failed to open PDF");
-  //   }
-  // };
   const handleView = async (testId) => {
-    const url = `http://localhost:5000/api/lab/download-result/${testId}`;
+    const url = `${import.meta.env.VITE_API_BASE_URL}/api/lab/download-result/${testId}`;
     console.log("Opening PDF for testId:", testId, "URL:", url);
   
     try {

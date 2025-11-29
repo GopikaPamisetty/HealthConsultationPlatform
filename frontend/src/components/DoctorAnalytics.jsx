@@ -27,7 +27,7 @@ const DoctorAnalytics = () => {
         const token = localStorage.getItem("token");
 
         const response = await axios.get(
-          `http://localhost:5000/api/analytics/doctor/${doctorId}`,
+          `${import.meta.env.VITE_API_BASE_URL}/api/analytics/doctor/${doctorId}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }

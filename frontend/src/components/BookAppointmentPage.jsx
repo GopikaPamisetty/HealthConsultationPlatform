@@ -4,7 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const API_BASE = "http://localhost:5000/api";
+const API_BASE = `${import.meta.env.VITE_API_BASE_URL}/api`;
 
 const timeSlots = [
   "09:00 am",
@@ -53,46 +53,6 @@ const BookAppointmentPage = () => {
   const isSlotBooked = (slot) =>
     selectedDate && bookedSlots.includes(`${selectedDate}|${slot}`);
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   if (!selectedDate || !selectedTime) {
-  //     toast.error("Please select both date and time.");
-  //     return;
-  //   }
-
-  //   try {
-  //     setIsSubmitting(true); // start loading
-  //     const storedUser = JSON.parse(localStorage.getItem("user"));
-  //     if (!storedUser) {
-  //       toast.error("Please login to book an appointment.");
-  //       setIsSubmitting(false);
-  //       return;
-  //     }
-    
-  //     const payload = {
-  //       doctorId: doctor._id,
-  //       doctorName: doctor.name,
-  //       patientId: storedUser._id,
-  //       patientName: storedUser.name,
-  //       email: storedUser.email,
-  //       date: selectedDate,
-  //       time: selectedTime,
-  //       ...formData,
-  //     };
-    
-  //     await axios.post(`${API_BASE}/appointments`, payload, {
-  //       headers: { Authorization: `Bearer ${storedUser.token}` },
-  //     });
-    
-  //     toast.success("Appointment booked successfully! Doctor will receive a notification.");
-  //     navigate("/patient-dashboard");
-  //   } catch (err) {
-  //     console.error(err);
-  //     toast.error(err.response?.data?.msg || "Booking failed");
-  //   } finally {
-  //     setIsSubmitting(false); // stop loading
-  //   }
-  // }
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!selectedDate || !selectedTime) {

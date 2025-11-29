@@ -12,7 +12,7 @@ const ForgotPassword = () => {
     e.preventDefault();
     try {
       // ✅ Send email instead of phone
-      const res = await axios.post("http://localhost:5000/api/auth/send-otp", { email });
+      const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/auth/send-otp`, { email });
       toast.success(res.data.message);
 
       setTimeout(() => {

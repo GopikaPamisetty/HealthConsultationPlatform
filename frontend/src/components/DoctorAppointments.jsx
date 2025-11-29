@@ -32,7 +32,7 @@ const DoctorAppointments = () => {
   const fetchAppointmentsByStatus = async (status) => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/appointments/status/${status}`,
+        `${import.meta.env.VITE_API_BASE_URL}/api/appointments/status/${status}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setAppointments(res.data);
@@ -46,7 +46,7 @@ const DoctorAppointments = () => {
     const newCounts = {};
     for (let s of statuses) {
       const res = await axios.get(
-        `http://localhost:5000/api/appointments/status/${s}`,
+        `${import.meta.env.VITE_API_BASE_URL}/api/appointments/status/${s}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       newCounts[s] = res.data.length;
@@ -62,7 +62,7 @@ const DoctorAppointments = () => {
           : { status: newStatus };
 
       await axios.patch(
-        `http://localhost:5000/api/appointments/status/${id}`,
+        `${import.meta.env.VITE_API_BASE_URL}/api/appointments/status/${id}`,
         payload,
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -116,7 +116,7 @@ const DoctorAppointments = () => {
     const handleViewReport = async (appointmentId) => {
       try {
         const res = await fetch(
-          `http://localhost:5000/api/appointments/report/${appointmentId}`,
+         `${import.meta.env.VITE_API_BASE_URL}/api/appointments/report/${appointmentId}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
         if (!res.ok) throw new Error("Failed to fetch report");

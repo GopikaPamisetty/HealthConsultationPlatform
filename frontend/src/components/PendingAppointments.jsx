@@ -1,6 +1,3 @@
-
-
-
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -26,7 +23,7 @@ const [loadingAction, setLoadingAction] = useState(""); // "Approved" or "Reject
       try {
         const token = localStorage.getItem("token");
         const res = await axios.get(
-          "http://localhost:5000/api/appointments/appointments",
+          `${import.meta.env.VITE_API_BASE_URL}/api/appointments/appointments`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -51,7 +48,7 @@ const [loadingAction, setLoadingAction] = useState(""); // "Approved" or "Reject
       const payload = status === "Completed" ? { status, prescription, medicines } : { status };
   
       await axios.patch(
-        `http://localhost:5000/api/appointments/update-status/${id}`,
+        `${import.meta.env.VITE_API_BASE_URL}/api/appointments/update-status/${id}`,
         payload,
         { headers: { Authorization: `Bearer ${token}` } }
       );

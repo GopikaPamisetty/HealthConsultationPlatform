@@ -16,7 +16,7 @@ const FeedbackModal = ({ show, onClose, appointment, onFeedbackSubmitted }) => {
       setLoading(true);
       const token = localStorage.getItem("token");
       await axios.post(
-        "http://localhost:5000/api/feedback",
+        `${import.meta.env.VITE_API_BASE_URL}/api/feedback`,
         {
           appointmentId: appointment._id,
           doctorId: appointment.doctorId._id || appointment.doctorId,
