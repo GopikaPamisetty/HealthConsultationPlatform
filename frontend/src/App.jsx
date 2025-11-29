@@ -72,7 +72,9 @@ function App() {
         {/* Public Routes */}
         <Route path="/" element={<HomePage />} />
         <Route path="/register" element={<RegisterForm />} />
-        <Route path="/login" element={<LoginForm onLogin={setUser} />} />
+        {/* <Route path="/login" element={<LoginForm onLogin={setUser} />} /> */}
+        <Route path="*" element={<div>404 Page Not Found</div>} />
+
         <Route path="/doctors" element={<div className="min-h-screen bg-gray-50"><DoctorsPage /></div>} />
         <Route path="/appointment/:id" element={<BookAppointmentPage />} />
         <Route path="/doctors/approved" element={<PatientDoctors user={user} />} />
