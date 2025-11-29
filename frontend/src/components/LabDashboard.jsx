@@ -68,12 +68,7 @@ const LabDashboard = () => {
           >
             View Test Requests
           </button>
-          <button
-            onClick={() => navigate("/lab-reports")}
-            className="bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition"
-          >
-            View Reports
-          </button>
+          
           <button
             onClick={() => navigate("/lab-profile")}
             className="bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition"
@@ -89,19 +84,7 @@ const LabDashboard = () => {
           </button>
         </div>
 
-        {/* Optional: Quick Upload Section */}
-        <div className="mt-6">
-          <h2 className="text-xl font-semibold mb-2">Upload Test Result</h2>
-          <input
-            type="file"
-            onChange={(e) => {
-              const file = e.target.files[0];
-              const testId = prompt("Enter Test ID to upload for:"); // simple input for now
-              handleUpload(file, testId);
-            }}
-            className="border p-2 rounded"
-          />
-        </div>
+       
       </div>
     </div>
   );

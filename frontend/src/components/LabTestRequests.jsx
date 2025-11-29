@@ -12,10 +12,11 @@ const LabTestRequests = () => {
   const [file, setFile] = useState(null);
   const token = localStorage.getItem("token");
   const [viewPdfUrl, setViewPdfUrl] = useState(null);
-
+  const [loading, setLoading] = useState(true);
 
   // Fetch tests
   const fetchTests = async () => {
+    setLoading(true);
     try {
       const user = JSON.parse(localStorage.getItem("user"));
       console.log("Current user from localStorage:", user);
@@ -46,6 +47,9 @@ const LabTestRequests = () => {
     } catch (err) {
       console.error("Error fetching tests:", err);
       toast.error("Error: " + err.message);
+    }
+    finally {
+      setLoading(false); // ✅ finish loading
     }
   };
   
@@ -145,7 +149,9 @@ const handleUpload = async () => {
       <h1 className="text-2xl font-bold mb-5 text-indigo-700">Lab Test Requests</h1>
 
       <div className="w-full max-w-3xl bg-white shadow-lg rounded-lg p-5">
-        {tests.length === 0 ? (
+      {loading ? ( // ✅ show loading
+          <p className="text-center text-indigo-700 text-lg">Loading test requests...</p>
+        ) : tests.length === 0 ? (
           <p className="text-center text-gray-500">No test requests found</p>
         ) : (
           <table className="w-full text-left border-collapse">
